@@ -3,7 +3,6 @@ import bodyParser from 'body-parser';
 import TodoList from './todoList.js';
 
 const app = express();
-const PORT  = process.env.PORT || 3000;
 
 app.set('view engine', 'pug');
 
@@ -39,9 +38,5 @@ app.delete('/todos/:id', (req, res) => {
     todoList.removeTodo(id);
     res.sendStatus(204);
 });
-
-// app.listen(PORT, () => {
-//     console.log(`Server listening on port ${PORT}`);
-// });
 
 export default app;
