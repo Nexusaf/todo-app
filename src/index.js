@@ -5,7 +5,8 @@ import TodoList from './todoList.js';
 const app = express();
 const PORT  = process.env.PORT || 3000;
 
-app.use('view engine', 'pug');
+app.set('view engine', 'pug');
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 

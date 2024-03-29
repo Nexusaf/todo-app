@@ -1,4 +1,4 @@
-import { Todo } from './todo.js';
+import Todo from './todo.js';
 
 class TodoList {
     constructor() {
