@@ -1,0 +1,6 @@
+*.log
+*.o
+*.exe
+*.txt
+package-lock.json
+node_modules/
