@@ -20,7 +20,7 @@ app.get('/todos', (req, res) => {
 app.post('/todos', (req, res) => {
     const { task } = req.body;
     const newTodo = todoList.addTodo(task);
-    res.json(newTodo);
+    res.status(201).json(newTodo);
 });
 
 app.put('/todos/:id', (req, res) => {
@@ -28,7 +28,7 @@ app.put('/todos/:id', (req, res) => {
     const { task, completed } = req.body;
     const updatedTodo = todoList.updateTodo(id, task, completed);
     if(updatedTodo) {
-        res.json(updatedTodo);
+        res.status(200).json(updatedTodo);
     } else {
         res.status(404).json({ message: 'Todo not found' });
     }
@@ -40,6 +40,8 @@ app.delete('/todos/:id', (req, res) => {
     res.sendStatus(204);
 });
 
-app.listen(PORT, () => {
-    console.log(`Server listening on port ${PORT}`);
-});
+// app.listen(PORT, () => {
+//     console.log(`Server listening on port ${PORT}`);
+// });
+
+export default app;

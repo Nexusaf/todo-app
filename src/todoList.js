@@ -16,7 +16,7 @@ class TodoList {
     }
 
     getTodoById(id) {
-        return this.todos.find(todo => todo.id === id);
+        return this.todos.find(todo => todo.id == id);
     }
 
     updateTodo(id, updatedTask, status) {
@@ -31,6 +31,7 @@ class TodoList {
     }
 
     removeTodo(id) {
+        id = Number(id);
         this.todos = this.todos.filter(todo => todo.id !== id);
     }
 }
