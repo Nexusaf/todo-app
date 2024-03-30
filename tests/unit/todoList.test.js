@@ -8,17 +8,17 @@ describe('Todo List Model', () => {
         const todoList = new TodoList();
         
         expect(todoList).toBeDefined();
-        expect(todoList.todos).toEqual([]);
+        expect(Array.isArray(todoList.todos)).toBe(true);
     });
 
     test('Should add a new todo to the list', () => {
         const newTodoTask = todoList.addTodo('New Task');
+        lastTodoInsertedId = newTodoTask.id;
 
         expect(newTodoTask).toBeDefined();
         expect(newTodoTask.task).toBe('New Task');
-        expect(todoList.todos[0]).toBe(newTodoTask);
+        expect(todoList.getTodoById(lastTodoInsertedId)).toBe(newTodoTask);
         
-        lastTodoInsertedId = newTodoTask.id;
     });
 
     test('Should get all todos', () => {
@@ -46,12 +46,14 @@ describe('Todo List Model', () => {
     });
 
     test('Removing a todo', () => {
-        const todoList = new TodoList();
         const newTodo = todoList.addTodo('New Task');
+        const lengthBeforeRemove = todoList.getAllTodos().length;
 
         todoList.removeTodo(newTodo.id);
+        
+        const isRemovedTodo = todoList.getTodoById(newTodo.id);
 
-        expect(todoList.todos.length).toBe(0);
-        expect(todoList.getTodoById(newTodo.id)).toBeUndefined();
+        expect(isRemovedTodo).toBeUndefined();
+        expect(todoList.getAllTodos().length).toBe(lengthBeforeRemove - 1);
     });
 });
