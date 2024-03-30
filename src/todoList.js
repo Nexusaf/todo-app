@@ -1,5 +1,6 @@
 import Todo from './todo.js';
 import fs from 'fs';
+
 class TodoList {
     constructor() {
         this.dbFilePath = `./db/todos.json`;
@@ -28,6 +29,7 @@ class TodoList {
     addTodo(task) {
         const newTodo = new Todo(Date.now(), task);
         this.todos.push(newTodo);
+        this.saveTodos();
         return newTodo;
     }
 
@@ -42,8 +44,8 @@ class TodoList {
     updateTodo(id, updatedTask, status) {
         const todoToUpdate = this.getTodoById(id);
         if(todoToUpdate) {
-            todoToUpdate.task = updatedTask;
-            todoToUpdate.completed = status;
+            todoToUpdate.task = updatedTask; // Certify that property exist and do not have a void string or white spaces. Use validatior
+            todoToUpdate.completed = status; // Certify that status is a primitive boolean instead string "false" or "true". Use validatior
             this.saveTodos();
             return todoToUpdate;
         }
