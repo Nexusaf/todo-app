@@ -1,4 +1,4 @@
-import TodoList from '../../src/todoList';
+import TodoList from '../../src/models/todoList';
 
 describe('Todo List Model', () => {
     const todoList = new TodoList();
