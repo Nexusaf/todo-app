@@ -44,8 +44,8 @@ class TodoList {
     updateTodo(id, updatedTask, status) {
         const todoToUpdate = this.getTodoById(id);
         if(todoToUpdate) {
-            todoToUpdate.task = updatedTask; // Certify that property exist and do not have a void string or white spaces. Use validatior
-            todoToUpdate.completed = status; // Certify that status is a primitive boolean instead string "false" or "true". Use validatior
+            todoToUpdate.task = updatedTask;
+            todoToUpdate.completed = status;
             this.saveTodos();
             return todoToUpdate;
         }

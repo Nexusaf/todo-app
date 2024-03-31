@@ -1,4 +1,5 @@
-import TodoList from '../todoList.js';
+import TodoList from '../models/todoList.js';
+import  isValidTask  from '../../validators/validation.js';
 const todoList = new TodoList();
 
 function getAllTodos(req, res) {
@@ -7,8 +8,13 @@ function getAllTodos(req, res) {
 
 function addTodo(req, res) {
     const { task } = req.body;
-    const newTodo = todoList.addTodo(task);
-    res.status(201).json(newTodo);
+
+    if(isValidTask(task)) {
+        const newTodo = todoList.addTodo(task);
+        res.status(201).json(newTodo);
+    } else {
+        res.status(400).json({ error: 'Task must be defined and not empty' });
+    }
 }
 
 function updateTodo(req, res) {
