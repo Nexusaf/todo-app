@@ -1,5 +1,3 @@
-function isValidTask(task) {
-    return !!task && typeof task === 'string' ? task.trim().length > 0 : false;
-}
+const isValidTask = task => task?.trim().length > 0;
 
-export default  isValidTask;
+export default isValidTask;
