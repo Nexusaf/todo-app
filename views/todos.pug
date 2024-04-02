@@ -3,9 +3,20 @@ html(lang="en")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="/css/style.css")
         title Todo List
     body
         h1 Todo List
-        ul
-            each todo in todos
-                li= todo.task
+
+        div(class="container")
+            form(action="" method="POST" id="todoForm")
+                input(type="text" name="task" id="taskInput" maxlength="50" size="50" placeholder="Enter a new task")
+                button(type="submit") Add Task
+            
+            ul(id="todoList")
+                each task, index in tasks
+                    li
+                        label
+                            input(type="checkbox")
+                            span #{task.task}
+                        button(type="button") Delete
