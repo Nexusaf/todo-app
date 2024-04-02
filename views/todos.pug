@@ -4,19 +4,21 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         link(rel="stylesheet", href="/css/style.css")
+        script(src="/js/todo.js") 
         title Todo List
     body
         h1 Todo List
 
         div(class="container")
             form(action="" method="POST" id="todoForm")
-                input(type="text" name="task" id="taskInput" maxlength="50" size="50" placeholder="Enter a new task")
+                input(type="text" name="task" id="taskInput" required maxlength="50" size="50" placeholder="Enter a new task")
                 button(type="submit") Add Task
             
             ul(id="todoList")
                 each task, index in tasks
                     li
                         label
-                            input(type="checkbox")
+                            input(type="checkbox" name="check-task")
                             span #{task.task}
-                        button(type="button") Delete
+                        button(type="button" class="del-btn") Delete
+                        input(type="hidden", name="task-id" value=task.id)

@@ -63,14 +63,8 @@ function updateTodo(req, res) {
 
 function deleteTodo(req, res) {
     const { id } = req.params;
-    const isTest = req.body.test;
-
-    if(isTest) {
-        todoList.removeTodo(id);
-        res.sendStatus(204);
-    }
-    
-    getAllTodos(req, res);
+    todoList.removeTodo(id);
+    res.sendStatus(204);
 }
 
 export {
