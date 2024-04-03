@@ -9,8 +9,12 @@ function getAllTodos(req, res) {
     if(!data) {
         res.status(404).json({ message: 'Todo list is empty' });
     }
-    
-    res.render('todos', { tasks: data });
+
+    const sortedData = data.sort((a, b) => {
+        return b.id - a.id;
+    });
+
+    res.render('todos', { tasks: sortedData });
 }
 
 function addTodo(req, res) {
