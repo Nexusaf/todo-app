@@ -1,3 +1,7 @@
+/**
+ * Configures Express app with middleware and routes.
+ */
+
 import express from 'express';
 import bodyParser from 'body-parser';
 import router from './routes/todoRoutes.js';

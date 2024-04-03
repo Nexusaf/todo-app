@@ -1,3 +1,15 @@
+/**
+ * Tests for the TodoList model class.
+ * 
+ * Creates a TodoList instance and tests:
+ * - Creating a new instance
+ * - Adding a todo 
+ * - Getting all todos
+ * - Getting a todo by id
+ * - Updating a todo
+ * - Removing a todo
+*/
+
 import TodoList from '../../src/models/todoList';
 
 describe('Todo List Model', () => {
@@ -6,7 +18,7 @@ describe('Todo List Model', () => {
 
     test('Creating a new todo list instance', () => {
         const todoList = new TodoList();
-        
+
         expect(todoList).toBeDefined();
         expect(Array.isArray(todoList.todos)).toBe(true);
     });
@@ -18,7 +30,7 @@ describe('Todo List Model', () => {
         expect(newTodoTask).toBeDefined();
         expect(newTodoTask.task).toBe('New Task');
         expect(todoList.getTodoById(testId)).toBe(newTodoTask);
-        
+
     });
 
     test('Should get all todos', () => {
@@ -38,7 +50,7 @@ describe('Todo List Model', () => {
     test('Should update a todo', () => {
         const updatedStatus = true;
         const updatedTodo = todoList.updateTodo(testId, updatedStatus);
-       
+
         expect(updatedTodo).toBeDefined();
         expect(updatedTodo.completed).toBe(true);
     });

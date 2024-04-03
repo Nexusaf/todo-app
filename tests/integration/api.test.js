@@ -1,3 +1,14 @@
+/**
+ * Tests API endpoints for a TODO app
+ * 
+ * Tests the following endpoints:
+ * 
+ * GET /todos - Should return all todos
+ * POST /todos - Should add a new todo 
+ * PUT /todos/:id - Should update a todo
+ * DELETE /todos/:id - Should delete a todo
+ */
+
 import request from'supertest';
 import app from '../../src/app.js';
 

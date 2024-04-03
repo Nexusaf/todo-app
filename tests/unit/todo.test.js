@@ -1,3 +1,7 @@
+/**
+ * Tests creating a new Todo instance and its properties.
+ * Also tests marking a Todo as completed by setting completed to true.
+ */
 import Todo from '../../src/models/todo.js';
 
 describe('Todo Model', () => {

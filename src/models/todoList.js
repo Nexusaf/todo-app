@@ -1,3 +1,10 @@
+/**
+ * Loads the todos data from the JSON file. 
+ * Returns the parsed todos array.
+ * Handles errors by returning empty array and logging.
+*/
+
+
 import Todo from './todo.js';
 import fs from 'fs';
 

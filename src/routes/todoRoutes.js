@@ -1,3 +1,8 @@
+/**
+ * Defines routes for the todos API.
+ * Includes routes for GET, POST, PUT, and DELETE operations on /todos.
+ */
+
 import express from "express";
 import {
     getAllTodos,

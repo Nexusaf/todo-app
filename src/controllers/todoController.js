@@ -1,12 +1,18 @@
+/**
+ * Controller with CRUD operations for a todo list.
+ * Exposes REST API endpoints for getting all todos, adding a new todo, 
+ * updating a todo, and deleting a todo.
+ */
+
 import TodoList from '../models/todoList.js';
-import  isValidTask  from '../../validators/validation.js';
+import isValidTask from '../../validators/validation.js';
 
 const todoList = new TodoList();
 
 function getAllTodos(req, res) {
     const data = todoList.getAllTodos();
 
-    if(!data) {
+    if (!data) {
         res.status(404).json({ message: 'Todo list is empty' });
     }
 
@@ -14,13 +20,13 @@ function getAllTodos(req, res) {
         return b.id - a.id;
     });
 
-    res.render('todos', { tasks: sortedData});
+    res.render('todos', { tasks: sortedData });
 }
 
 function addTodo(req, res) {
     const { task } = req.body;
 
-    if(!isValidTask(task)) {
+    if (!isValidTask(task)) {
         res.status(400).json({ error: 'Task must be defined and not empty' });
     }
 
@@ -32,12 +38,12 @@ function updateTodo(req, res) {
     const { id } = req.params;
     const { completed } = req.body;
 
-    if(typeof completed !== 'boolean') {
+    if (typeof completed !== 'boolean') {
         res.status(400).json({ error: 'Completed must be a boolean' });
     }
 
     const updatedTodo = todoList.updateTodo(id, completed);
-    if(!updatedTodo) {
+    if (!updatedTodo) {
         res.status(404).json({ message: 'Todo not found' });
     }
 
