@@ -21,4 +21,10 @@ html(lang="en")
                             input(type="checkbox" name="check-task")
                             span #{task.task}
                         button(type="button" class="del-btn") Delete
-                        input(type="hidden", name="task-id" value=task.id)
+                        input(type="hidden", id="taskId" name="task-id" value=task.id)
+            
+            div(id="modal" class="modal")
+                div(class="modal-content")
+                    span(class="close" id="close") &times;
+                    p Are you sure you want to delete this task?
+                    button(type="button" id="confirmDelete") Yes, delete!

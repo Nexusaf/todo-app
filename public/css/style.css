@@ -68,3 +68,38 @@ li button:hover {
 li button:active {
     background-color: #d63357;
 }
+
+.modal {
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4); 
+    display: none;
+    height: 100%;
+    left: 0;
+    overflow: auto;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    border: 1px solid #888;
+    width: 40%;
+    position: relative;
+    z-index: 2;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover, .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
