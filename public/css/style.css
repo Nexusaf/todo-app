@@ -42,9 +42,26 @@ h1 {
     text-align: center;
 }
 
-ul {
+#uncompleted, #completed {
     list-style-type: none;
-    padding: 0;
+    padding: 10px;
+    border: 1px solid #0000003a;
+    border-radius: 5px;
+}
+
+#completed {
+    background-color: #f3f3f3;
+}
+
+#completed li {
+    background-color: #f3f3f3;
+}
+
+ul p {
+    margin-top: 0;
+    font-size: 16px;
+    font-weight: 400;
+    color: #4d4d4d;
 }
 
 li {
@@ -107,7 +124,8 @@ li button:active, .modal-content button:active {
     background-color: #fefefe;
     margin: 15% auto;
     border: 1px solid #888;
-    width: 40%;
+    min-width: 370px;
+    width: 370px;
     position: relative;
     z-index: 2;
     border-radius: 5px;

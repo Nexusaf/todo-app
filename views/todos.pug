@@ -14,14 +14,27 @@ html(lang="en")
                 input(type="text" name="task" id="taskInput" required maxlength="50" size="50" placeholder="Enter a new task")
                 button(type="submit") Add Task
             
-            ul(id="todoList")
+            ul(id="uncompleted")
+                p Uncompleted
                 each task, index in tasks
-                    li
-                        label
-                            input(type="checkbox" name="check-task")
-                            span #{task.task}
-                        button(type="button" class="del-btn") Delete
-                        input(type="hidden", id="taskId" name="task-id" value=task.id)
+                    if task.completed == false
+                        li
+                            label
+                                input(type="checkbox" name="check-task" class="check-task")
+                                span #{task.task}
+                            button(type="button" class="del-btn") Delete
+                            input(type="hidden", class="task-id" name="task-id" value=task.id)
+            
+            ul(id="completed")
+                p Completed
+                each task, index in tasks
+                    if task.completed == true
+                        li
+                            label
+                                input(type="checkbox" checked name="check-task" class="check-task")
+                                span #{task.task}
+                            button(type="button" class="del-btn") Delete
+                            input(type="hidden", class="task-id" name="task-id" value=task.id)
             
             div(id="modal" class="modal")
                 div(class="modal-content")

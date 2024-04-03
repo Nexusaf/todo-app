@@ -3,15 +3,37 @@ document.addEventListener('DOMContentLoaded', interface);
 function interface() {
     const form = document.querySelector('form');
     const submitBtn = form.querySelector('button');
-    const delBtns = document.querySelectorAll('.del-btn');
     const modal = document.getElementById('modal');
     const modalCloseBtn = modal.querySelector('.close');
+    const delBtns = document.querySelectorAll('.del-btn');
+    const item = document.querySelectorAll('.check-task');
 
     delBtns.forEach(btn => btn.addEventListener('click', confirmDeleteTask));
     submitBtn.addEventListener('click', addTask);
-    window.addEventListener('click', (event)=> {
+    item.forEach(item => item.addEventListener('click', checkTask));
+
+    modal.addEventListener('click', (event)=> {
         if (event.target === modal || event.target === modalCloseBtn) {
             closeModal();
+        }
+    });
+}
+
+function checkTask(event) {
+    const isChecked = event.target.checked;
+    const id = event.target.parentNode.parentNode.querySelector('.task-id').value;
+
+    fetch(`/todos/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            completed: isChecked
+        }),
+    }).then(response => {
+        if (response.status === 200) {
+            updateList();
         }
     });
 }
@@ -38,7 +60,7 @@ function addTask(event) {
         body: JSON.stringify(data),
     }).then(response => {
         if (response.status === 201) {
-            location.reload();                
+            updateList();                
         }
     })
 }
@@ -46,7 +68,7 @@ function addTask(event) {
 function confirmDeleteTask (event) {
     openModal();
     const listItem = event.target.parentNode;
-    const id = listItem.querySelector('#taskId').value;
+    const id = listItem.querySelector('.task-id').value;
     const confirmDelete = modal.querySelector('#confirmDelete');
     confirmDelete.addEventListener('click', () => {
         deleteTask(id, listItem);
@@ -67,5 +89,6 @@ function deleteTask(id, item) {
     })
 }
 
+const updateList = () => location.reload();
 const closeModal = () => modal.style.display = "none";
-const openModal = event => modal.style.display = "block";
+const openModal = () => modal.style.display = "block";
