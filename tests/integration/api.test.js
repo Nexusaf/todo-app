@@ -28,12 +28,11 @@ describe('API Endpoints', () => {
 
     describe('PUT /todos/:id', () => {
         test('Should update a todo', async () => {
-            const updatedTodo = { task: 'Updated todo', completed: true };
+            const updatedTodo = { completed: true };
             const updatedResponse = await request(app).put(`/todos/${testId}`).send(updatedTodo);
 
             expect(updatedResponse.status).toBe(200);
             expect(updatedResponse.body).toHaveProperty('id');
-            expect(updatedResponse.body.task).toBe(updatedTodo.task);
             expect(updatedResponse.body.completed).toBe(true);
         });
     });

@@ -36,12 +36,10 @@ describe('Todo List Model', () => {
     });
 
     test('Should update a todo', () => {
-        const updatedTask = 'Updated Task';
         const updatedStatus = true;
-        const updatedTodo = todoList.updateTodo(testId, updatedTask, updatedStatus);
+        const updatedTodo = todoList.updateTodo(testId, updatedStatus);
        
         expect(updatedTodo).toBeDefined();
-        expect(updatedTodo.task).toBe('Updated Task');
         expect(updatedTodo.completed).toBe(true);
     });
 
