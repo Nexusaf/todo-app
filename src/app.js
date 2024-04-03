@@ -20,5 +20,6 @@ app.use(express.static('public', { maxAge: '1d' }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(router);
+app.use('*', (req, res) => res.redirect('/todos'));
 
 export default app;
