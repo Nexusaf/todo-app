@@ -14,7 +14,7 @@ function getAllTodos(req, res) {
         return b.id - a.id;
     });
 
-    res.render('todos', { tasks: sortedData });
+    res.render('todos', { tasks: sortedData});
 }
 
 function addTodo(req, res) {
@@ -30,18 +30,13 @@ function addTodo(req, res) {
 
 function updateTodo(req, res) {
     const { id } = req.params;
-    const { task, completed } = req.body;
-
-    if(!isValidTask(task)) {
-        res.status(400).json({ error: 'Task must be defined and not empty' });
-    }
+    const { completed } = req.body;
 
     if(typeof completed !== 'boolean') {
         res.status(400).json({ error: 'Completed must be a boolean' });
     }
 
-    const updatedTodo = todoList.updateTodo(id, task, completed);
-
+    const updatedTodo = todoList.updateTodo(id, completed);
     if(!updatedTodo) {
         res.status(404).json({ message: 'Todo not found' });
     }

@@ -41,10 +41,9 @@ class TodoList {
         return this.todos.find(todo => todo.id == id);
     }
 
-    updateTodo(id, updatedTask, status) {
+    updateTodo(id, status) {
         const todoToUpdate = this.getTodoById(id);
         if(todoToUpdate) {
-            todoToUpdate.task = updatedTask;
             todoToUpdate.completed = status;
             this.saveTodos();
             return todoToUpdate;
