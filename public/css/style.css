@@ -52,7 +52,7 @@ li input[type="checkbox"] {
     margin-right: 10px;
 }
 
-li button {
+li button, .modal-content button {
     background-color: #d63357;
     border-radius: 3px;
     border: none;
@@ -61,11 +61,16 @@ li button {
     padding: 5px 10px;
 }
 
-li button:hover {
+.modal-content button {
+    display: block;
+    margin: 0 auto 20px;
+}
+
+li button:hover, .modal-content button:hover {
     background-color: #ff3b20;
 }
 
-li button:active {
+li button:active, .modal-content button:active {
     background-color: #d63357;
 }
 
@@ -89,6 +94,13 @@ li button:active {
     width: 40%;
     position: relative;
     z-index: 2;
+    border-radius: 5px;
+}
+
+.modal-content p {
+    text-align: center;
+    margin-top: 40px;
+    font-weight: bold;
 }
 
 .close {
@@ -96,6 +108,7 @@ li button:active {
     float: right;
     font-size: 28px;
     font-weight: bold;
+    margin-right: 7px;
 }
 
 .close:hover, .close:focus {
