@@ -9,7 +9,7 @@ To install and run this application, follow these steps:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/my-awesome-app.git
+   git clone https://github.com/Nexusaf/todo-app.git
 
 2. Navigate to the project directory:
     ```bash
